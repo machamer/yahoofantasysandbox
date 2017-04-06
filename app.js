@@ -91,6 +91,7 @@ app.get('/data/:resource/:subresource', routes.getData);
 app.get('/auth/yahoo',
   passport.authenticate('oauth2', { failureRedirect: '/login' }),
   function(req, res, user) {
+    console.log("authenticating");
     res.redirect('/');
   });
 
@@ -142,3 +143,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+app.listen(process.env.PORT || 3000);
